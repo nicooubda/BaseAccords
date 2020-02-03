@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les utilisateurs" %}
+
+{% block body %}
+	<div class ='container mt-2'>
+		<h3> Editer l'utilisateur</h3>
+		<hr class="my-7"><hr class="my-7">
+	{{ form_start(form)}}
+	
+    {{ form_widget(form)}}
+  
+        <button class="btn btn-success">Editer</button>
+    {{ form_end(form)}}
+	
+	<hr class="my-7"><hr class="my-7">
+</div>
+
+{% endblock %}

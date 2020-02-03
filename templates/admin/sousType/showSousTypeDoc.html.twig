@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+
+	<div class ='container mt-4'>
+    <hr class="my-7">
+		<h2> Gestion des sous types de Documents</h2>
+		<hr class="my-7"><hr class="my-7">
+         
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Sous type</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for soustype in soustypes %}
+                <tr>
+                    <td>
+                        {{ soustype.id }}
+                    </td>
+                    <td>
+                        {{ soustype.sousType }}
+                    </td>
+                    <td>
+                        {{ soustype.type.type }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin.soustype.edit', {id: soustype.id})}}" class='btn btn-secondary'>Editer</a>
+                        <form method='post' action = "" style="display:inline-block" onsubmit="return confirm('Etes-vous vraiment sure ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+	
+
+	<div class='text-right' >
+    <a href="{{path("admin.SousTypeDoc.new")}}" class="btn btn-primary">Creer un nouveau sous type</a>
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+	<div class ='container mt-3'>
+		<h2> <b>Enregistrer un fichier d'accord</b></h2>
+		<hr class="my-7">
+		<hr class="my-7">
+	{{ form_start(form)}}
+	<div class='row'>
+		<div class="col-md-3">  </div>
+        
+    {{ form_widget(form)}}
+	 
+    </div>	
+      <div class='text-center' >
+        <button class="btn btn-primary"> Enregistrer </button> 
+    </div>
+    {{ form_end(form)}}
+	
+	
+</div>
+
+{% endblock %}

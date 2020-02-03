@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<div class ='container mt-4' style='background-color:#DCDCDC'>
+		<h1> Enregistrer un accord</h1>
+		<hr class="my-7">
+		<hr class="my-7">
+		<hr class="my-7">
+	{{ form_start(form)}}
+	<div class='row'>
+		<div class="col-md-4" style="font-size:20px"> {{ form_row(form.cote)}} </div>
+		<div class="col-md-4" style="font-size:20px"> {{ form_row(form.boiteArchive)}} </div>
+		<div class="col-md-4"> {{ form_row(form.etatAccord)}} </div>
+	</div>
+
+	<div class='row'>
+		<div class="col-md-6" style="font-size:20px"> {{ form_row(form.lieuSignature)}} </div>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.dateEntree_at)}} </div>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.dateSignature_at)}} </div>
+	</div>
+
+	<div class='row'>
+		<div class="col-md-6" style="font-size:20px"> {{ form_row(form.typeDocument)}} </div>
+		<div class="col-md-6" style="font-size:20px"> {{ form_row(form.sousTypeDocument)}} </div>
+		
+	</div>
+		<div class='row'>
+		<div class="col-md-12" style="font-size:20px"> {{ form_row(form.intitule)}} </div>
+	</div>
+	<div class='row'>
+		<div class="col-md-12" style="font-size:20px"> {{ form_row(form.motCle)}} </div>
+	</div>
+	<div class='row'>
+		<div class="col-md-12" style="font-size:20px"> {{ form_row(form.motGeo)}} </div>
+	</div>
+	<div class='row'>
+		<div class="col-md-12" style="font-size:20px"> {{ form_row(form.note)}} </div>
+	</div>
+		<div class='row'>
+		<div class="col-md-12" style="font-size:20px"> {{ form_row(form.resume)}} </div>
+	</div>
+
+	<div class='row'>
+		
+		
+	</div>
+	{{ form_widget(form)}}
+	<hr class="my-7">
+        <button class="btn btn-primary"> Enregistrer </button>
+    {{ form_end(form)}}
+	<hr class="my-7">
+	<hr class="my-7">
+	<hr class="my-7">
+	<hr class="my-7">
+	
+</div>
+<script>
+	$(document).on('change','#accord_typeDocument',function(){
+		let $field = $(this)
+		let $form = $field.closest('form')
+		let data = {}
+		data[$field.attr('name')] = $field.val()
+		$.post($form.attr('action'),data).then(function (data){
+				let $input = $(data).find('#accord_sousTypeDocument')
+				$('#accord_sousTypeDocument').replaceWith($input)
+
+	})
+})
+
+</script>
+{% endblock %}
+
+
+
+

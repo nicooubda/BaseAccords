@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+
+	<div class ='container mt-4'>
+		<h1> Gestion des types de Documents</h1>
+		<hr class="my-4">
+       <div data-spy="scroll" data-target="#navbar-example2" data-offset="1">  
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for typeDocument in typeDocuments %}
+                <tr>
+                    <td>
+                        {{ typeDocument.id }}
+                    </td>
+                    <td>
+                        {{ typeDocument.type }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin.typeDoc.edit', {id: typeDocument.id})}}" class='btn btn-secondary'>Editer</a>
+                        <form method='post' action = "" style="display:inline-block" onsubmit="return confirm('Etes-vous vraiment sure ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+	
+    </div>
+	<div class='text-right' >
+    <a href="{{path("admin.typeDoc.new")}}" class="btn btn-primary">Créer un nouveau type</a>
+        
+    </div>
+</div>
+
+{% endblock %}

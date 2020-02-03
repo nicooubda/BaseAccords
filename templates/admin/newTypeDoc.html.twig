@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+	<div class ='container mt-4'>
+		<h1> Enregistrer le type de document</h1>
+        <hr class="my-7">
+		{% if exist == true %}
+         <div class="alert alert-danger" role="alert">
+         Le type de document existe déjà 
+         </div>
+        {% endif %}
+	{{ form_start(form)}}
+	<div class='row'>
+		<div class="col-md-3"> {{ form_row(form.type)}} </div>
+        
+    {{ form_widget(form)}}
+    </div>	
+        <button class="btn btn-primary"> Enregistrer </button>
+    {{ form_end(form)}}
+	
+	<div class='text-right' >
+        
+    </div>
+</div>
+
+{% endblock %}

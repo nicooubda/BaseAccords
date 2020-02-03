@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+
+	<div class ='container mt-4'>
+		<h2> Liste des langues</h2>
+        <hr class="my-7">
+         {% for message in app.flashes('success') %}
+         <div class="alert alert-success">
+         {{ message}}
+         </div>
+        {% endfor %}
+        <table class="table table-striped" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Langue</th>
+                    <th>Abreviation</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for langue in langues %}
+                <tr>
+                    <td>
+                        {{ langue.id }}
+                    </td>
+                    <td>
+                        {{ langue.langue }}
+                    </td>
+                    <td>
+                        {{ langue.abreviation }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin.langue.edit', {id: langue.id})}}" class='btn btn-secondary'>Editer</a>
+                        <form method='post' action = "" style="display:inline-block" onsubmit="return confirm('Etes-vous vraiment sure ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+<hr class="my-7">
+       
+	<div class='text-right' >
+    <a href="{{path("admin.langue.new")}}" class="btn btn-primary">Ajouter une langue</a>
+        <hr class="my-7"><hr class="my-7">
+        <hr class="my-7"><hr class="my-7">
+        <hr class="my-7">
+       
+    </div>
+</div>
+
+{% endblock %}

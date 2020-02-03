@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+
+	<div class ='container mt-4'>
+    <hr class="my-7">
+		<h2> Liste des utilisateurs</h2>
+		<hr class="my-7"><hr class="my-7">
+         {% for message in app.flashes('success') %}
+         <div class="alert alert-success">
+         {{ message}}
+         </div>
+        {% endfor %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                     <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>
+                        {{ user.nom }}
+                    </td>
+                    <td>
+                        {{ user.prenom }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                    <td>
+                        {% for role in user.roles  %}
+                           {% if role == "ROLE_ADMIN" %}
+                               Adminstrateur
+                           {% elseif role=="ROLE_USER" %}
+                               Utilisateur
+                           {% endif %} 
+                        {% endfor %}
+                       
+                    </td>
+                    <td>
+                        <a href="{{ path('security.edit', {id: user.id})}}" class='btn btn-secondary'>Editer</a>
+                        <form method='post' action = "" style="display:inline-block" onsubmit="return confirm('Etes-vous vraiment sure ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+	
+
+	<div class='text-right' >
+    <a href="{{path("security.inscription")}}" class="btn btn-primary">Enregistrer utilisateur</a>
+        <hr class="my-7"><hr class="my-7"><hr class="my-7"><hr class="my-7"><hr class="my-7"><hr class="my-7">
+    </div>
+</div>
+
+{% endblock %}

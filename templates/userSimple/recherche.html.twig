@@ -1,0 +1,82 @@
+{% extends 'userSimple/home.html.twig' %}
+
+{% block title "Gerer les types de documents" %}
+
+{% block body %}
+
+<div class ='container mt-2' style="background-color:#DCDCDC">
+<hr class="my-4">
+<h3>Critères de la recherche</h3>
+<hr class="my-7">
+<hr class="my-7">
+    {{ form_start(form)}}
+	<div class='form-row'>
+		<div class="col-md-4"> {{ form_row(form.type)}}</div>
+        <div class="col-md-4"> {{ form_row(form.titre)}} </div>
+		<div class="col-md-4"> {{ form_row(form.langue)}} </div> 
+	</div>
+    <div class='form-row'>
+		<div class="col-md-4"> {{ form_row(form.lieu)}} </div>
+		<div class="col-md-4"> {{ form_row(form.motCle)}} </div>
+        <div class="col-md-4"> <button class="btn btn-primary"> Rechercher </button></div>
+	</div>
+       
+    {{ form_end(form)}}
+		
+       <div data-spy="scroll"  style="overflow-y:scroll; overflow-x:hidden; height:400px;"> 
+       		<hr class="my-4">
+ 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre </th>
+                    <th>Date </th>
+                    <th>Lieu</th>
+                    <th>Sous type</th>
+                    <th>Langue</th>
+                    <th>Repertoire</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for repertoire in repertoires %}
+                <tr>
+                    <td>
+                        {{repertoire.accord.intitule}}
+                    </td>
+                    <td>
+                        {{repertoire.accord.intitule}}
+                    </td>
+                     <td>
+                        {{repertoire.accord.lieuSignature}}
+                    </td>
+                     <td>
+                        {{repertoire.accord.sousTypeDocument}}
+                    </td>
+                    <td>
+                        {{repertoire.langue.langue}}
+                    </td>
+                    <td>
+                        <a href="{{asset('uploads/' ~ repertoire.repertoire) }}">{{repertoire.repertoire}}</a>
+                    </td>
+                    <td>                   
+                            
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+	
+    </div>
+	<div class='text-center' >
+    <a href="{{path("admin.repertoire.new")}}" class="btn btn-primary">Ajouter fichier d'accord</a>
+        <hr class="my-7">
+        <hr class="my-7"><hr class="my-7">
+        <hr class="my-7"><hr class="my-7">
+        
+    </div>
+</div>
+
+{% endblock %}

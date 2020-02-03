@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les langues" %}
+
+{% block body %}
+	<div class ='container mt-4'>
+		<h2> Enregistrer une langue</h2>
+       {% if exist == true %}
+         <div class="alert alert-danger" role="alert">
+         La langue existe déjà 
+         </div>
+        {% endif %}
+        <hr class="my-7">
+        <hr class="my-7">
+	{{ form_start(form)}}
+	<div class='row'>
+		<div class="col-md-6" style="font-size:20px"> {{ form_row(form.langue)}} </div>
+        <div class="col-md-6" style="font-size:20px"> {{ form_row(form.abreviation)}} </div>
+    {{ form_widget(form)}}
+    </div>	
+        <button class="btn btn-primary"> Enregistrer </button>
+    {{ form_end(form)}}
+	
+	<div class='text-right' >
+        <hr class="my-7">
+        <hr class="my-7">
+    </div>
+</div>
+
+{% endblock %}

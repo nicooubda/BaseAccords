@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Gerer les langues" %}
+
+{% block body %}
+	<div class ='container mt-4'>
+		<h1> Editer la langue</h1>
+	{{ form_start(form)}}
+	<div class='row'>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.langue)}} </div>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.abreviation)}} </div>
+        
+    {{ form_widget(form)}}
+    </div>	
+        <button class="btn btn-primary">Editer</button>
+    {{ form_end(form)}}
+	
+	<div class='text-right' >
+        
+    </div>
+</div>
+
+{% endblock %}
