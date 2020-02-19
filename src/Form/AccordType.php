@@ -44,7 +44,9 @@ class AccordType extends AbstractType
                 'choice_label' => 'type',
                 'mapped' => false,
                 'placeholder' => 'Sélectionnez le type de document',
-            ]);
+            ])
+
+            ;
 
         $builder->get('typeDocument')->addEventListener(
             FormEvents::POST_SUBMIT,
@@ -64,13 +66,13 @@ class AccordType extends AbstractType
                 $data = $event->getData();
                 $sousType = $data->getSousTypeDocument();
                 $form = $event->getForm();
-                if ($sousType) {
-                    $form->getParent()->add('sousTypeDocument', EntityType::class, [
+
+                if ($sousType != null) {
+                    $form->add('sousTypeDocument', EntityType::class, [
                         'class' => SousTypeDocument::class,
-                        'placeholder' => $sousType ? 'Sélectionnez le sous type' : 'Sélectionnez d\'abord le type',
-                        'choice_label' => $sousType ? $sousType->getSousTypeDocument() : [],
+                        'placeholder' => 'Sélectionnez d\'abord le type',
+                        'choices' => [],
                     ]);
-                    $form->get('sousTypeDocument')->setData($sousType);
                 } else {
                     $form->add('sousTypeDocument', EntityType::class, [
                         'class' => SousTypeDocument::class,

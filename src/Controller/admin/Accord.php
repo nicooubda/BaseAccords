@@ -84,12 +84,12 @@ class Accord extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            $this->addFlash('success', 'Modifie avec succes');
+            $this->addFlash('success', 'Modifié avec succès');
 
             return $this->redirectToRoute('admin.accord.index');
         }
 
-        return $this->render('admin/accord/editLangue.html.twig', [
+        return $this->render('admin/accord/edit.html.twig', [
             'accords' => $accord,
             'form' => $form->createView(), ]);
     }

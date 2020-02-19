@@ -35,36 +35,26 @@
 </head>
 <body>
 <div class="login-form">
-<center><h4><p class="text-danger">Base de données des traités et accords</p></h4></center>
-    <form action="{{path('security_login')}}" method="POST">
+<center><h3><p class="text-danger">Base de données des traités et accords</p></h3></center>
+    
 <center><img src="{{asset('image/bf.png') }}" alt="" height="100%" width="100%" align="center"/></center>
 <hr class="my-7">
-
-        <h2 class="text-center">Connexion</h2>    
-
-<div class="form-group"> 
+ {{ form_start(form)}}
+        <h2 class="text-center">Réinitialisation de mot de passe</h2>   
+       <div class="form-group"> 
        {% for message in app.flashes('message') %}
          <div class="alert alert-danger">
          {{ message}}
          </div>
-        {% endfor %}    
-    </div>      
+        {% endfor %}    </div>       
+	<div class='row'>
+		<div class="col-md-12"> {{ form_row(form.email)}} </div>
+        
+    {{ form_widget(form)}}
+    </div>	
+        <button class="btn btn-primary"> Envoyer </button>
+    {{ form_end(form)}}
 
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email" required name="_username">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" placeholder="Mot de passe" required name="_password">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success btn-block">Se connecter</button>
-        </div>
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <a href="{{path('app_forgotten_pass')}}" class="pull-right">Mot de passe oublié ?</a>
-        </div>        
-    </form>
-    <p class="text-center"><a href="#">Veuillez renseigner le nom d'utilisateur et le mot de passe</a></p>
 </div>
 </body>
 </html>                                		                            

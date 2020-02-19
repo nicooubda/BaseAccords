@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bienvenue sur la base de donnees des accords{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    </head>
+    <body style= "background-color: #DCDCDC;">
+<div class='container m-t-2'>
+<div class="col-12 col-md-12">
+
+<nav class="navbar navbar-expand-lg navbar-dark col-13" style="font-weight-bold;background-color: #008000; padding-top: 18px; padding-bottom: 16px; font-size:16;padding-left:16px">
+  <a class="navbar-brand" href="/">Base des accords</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/admin/langue"><b>Langue</b></a>
+      </li>
+      <li class="nav-item active m-t-9">
+        <a class="nav-link" href="/admin/repertoire"><b>Rechercher</b></a>
+      </li>
+      <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accord</a>
+       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/accord"><b>Ajouter accord</b></a>
+          <a class="dropdown-item" href="/admin/repertoire/new"><b>Ajouter fichier accord</b></a>
+        </div>
+      </li>
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <b>Type Document</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/admin/soustype"><b>Sous type</b></a>
+          <a class="dropdown-item" href="/admin/typedocument/typeDoc"><b>Type document</b></a>
+        </div>
+      </li>
+ <li class="nav-item active">
+        <a class="nav-link" href="/security/listeUser"><b>User</b></a>
+      </li>
+      <li class="nav-item active col-3">
+        <a class="nav-link" href="/audit/details"><b>Historique</b></a>
+      </li>
+      {% if not app.user %}
+       <li class="nav-item active">
+        <a class="nav-link" href="/"><b>Connexion</b></a>
+      </li>
+      {% else %}
+         <li class="nav-item active ">
+        <a class="nav-link" href="/logout"><b>Déconnexion</b></a>
+      </li>  
+      {% endif %}
+      
+    </ul>
+  </div>
+</nav>
+
+
+ 
+ <div class ='container mt-4'>
+		<h3> Historiques de la base de données</h3>
+	{{ form_start(form)}}
+	
+		<div class='row'>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.table)}} </div>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.action)}} </div>
+		<div class="col-md-3" style="font-size:20px"> {{ form_row(form.date)}} </div>
+    <div class="col-md-3" style="font-size:20px"> <button class="btn btn-primary">Rechercher</button> </div>
+	</div>
+        
+    {{ form_widget(form)}}
+  
+        
+    {{ form_end(form)}}
+	
+	<div class='text-right' >
+        
+    </div>
+</div>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>$(document).on('change', '.custom-file-input', function () {
+    let fileName = $(this).val().replace(/\\/g, '/').replace(/.*\//, '');
+    $(this).parent('.custom-file').find('.custom-file-label').text(fileName);
+});</script>
+    </script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <hr class="my-7">
+  <hr class="my-7">
+{% import '@DHDoctrineAudit/Audit/helpers/bootstrap.html.twig' as bootstrap %}
+{% import '@DHDoctrineAudit/Audit/helpers/helper.html.twig' as helper %}
+{% for entrys in entry %}
+<hr class="my-7">
+<article class="timeline-entry">
+    <div class="timeline-entry-inner">
+        
+
+        <div class="timeline-label">
+            <div class="row">
+                <div class="col-lg-7"><h6 class="mb-1">{{ helper.humanize(entity, entrys) }}</h6></div>
+                <time class="timeline-time" datetime="2014-01-10T03:45">
+           <b> <span>{{ entrys.created_at|date('H:i:s') }}</span> <span>{{ entrys.created_at|date('l d F Y') }}</span></b>
+        </time>
+
+        <div class="timeline-icon bg-{{ bootstrap.label_type(entrys.type) }}">
+            {{ bootstrap.icon_type(entrys.type) }}
+        </div>
+                <div class="col-lg-3" align="right">
+                    {% if entrys.transaction_hash is not empty %}
+                    <a href="{{ path('dh_doctrine_audit_show_transaction', {hash: entrys.transaction_hash}) }}" class="badge badge-pill badge-light font-weight-light transaction-hash" title="{% trans %}audit.audit_details.entry_title{% endtrans %}">
+                        <i class="fas fa-tag"></i>&nbsp;{{ entrys.transaction_hash }}
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="col-lg-1" align="center">{{ bootstrap.badge(entrys.type, bootstrap.label_type(entrys.type)) }}</div>
+            </div>
+           
+            {% if entrys.type in ['insert', 'update','remove'] %}
+                <table class="table table-hover layout-fixed table-sm mt-2 mb-0">
+                    <thead class="thead-light">
+                    <th width="20%">{% trans %}audit.audit_details.property{% endtrans %}</th>
+                    <th width="20%">{% trans %}audit.audit_details.old_value{% endtrans %}</th>
+                    <th width="20%">{% trans %}audit.audit_details.new_value{% endtrans %}</th>
+                    </thead>
+                    <tbody>
+                    {% set diffs = entrys.diffs|json_decode(true) %}
+                    {% for key, values in diffs %}
+                        <tr>
+                            <td><code>{{ key }}</code></td>
+                            <td>
+                                {% if values.old is defined %}
+                                    {% if values.old is null %}
+                                        {{ bootstrap.badge('null', 'secondary') }}
+                                    {% else %}
+                                        {{ bootstrap.text(helper.dump(values.old), 'danger') }}
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if values.new is defined %}
+                                    {% if values.new is null %}
+                                        {{ bootstrap.badge('null', 'secondary') }}
+                                    {% else %}
+                                        {% if values.old is null %}
+                                            {{ bootstrap.text(helper.dump(values.new), 'primary') }}
+                                        {% else %}
+                                            {{ bootstrap.text(helper.dump(values.new), 'success') }}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+       
+        </div>
+    </div>
+</article>
+ {% endfor %}
+
+    </body>
+   <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://www.linkedin.com/in/nicolas-oubda-a08222162/">Nicolas OUBDA </a>
+  </div>
+</html>

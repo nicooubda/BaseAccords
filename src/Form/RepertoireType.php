@@ -18,7 +18,7 @@ class RepertoireType extends AbstractType
     {
         $builder
             ->add('repertoire', FileType::class, [
-                'label' => 'Accord (Fichhier PDF)',
+                'label' => 'Fichier PDF',
 
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes

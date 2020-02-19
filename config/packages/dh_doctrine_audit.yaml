@@ -1,0 +1,18 @@
+dh_doctrine_audit:
+    # Configuration reference available at:
+    # https://github.com/DamienHarper/DoctrineAuditBundle#configuration
+    table_prefix: ''
+    table_suffix: '_audit'
+    entities:
+#        MyBundle\Entity\MyAuditedEntity1: null   # all MyAuditedEntity1 properties are audited
+#        MyBundle\Entity\MyAuditedEntity2:
+#            ignored_columns:                  # MyAuditedEntity2 properties to be ignored by the audit process
+#                - createdAt
+#                - updatedAt
+        App\Entity\Langue: ~
+        App\Entity\Accords: ~
+        App\Entity\Repertoire: ~
+        App\Entity\User: ~
+        App\Entity\TypeDocument: ~
+        App\Entity\SousTypeDocument: ~
+        App\Entity\AccordSearch: ~

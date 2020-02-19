@@ -6,7 +6,7 @@
 {% block body %}
 
 	<div class ='container mt-4'>
-		<h2> Gestion des types des accords</h2>
+		<h3> Gestion des accords</h3>
 		<hr class="my-7">
         {% for message in app.flashes('success') %}
          <div class="alert alert-success">
@@ -14,7 +14,7 @@
          </div>
         {% endfor %}
         <hr class="my-7">
-        <p style='font-color:red'><h3><b>Nombre d'accords: {{nombre}}<b></h3></p>
+        <p style='font-color:red'><h5>Nombre d'accords: {{nombre}}</h5></p>
          <hr class="my-7">
       <div id=""  style="overflow-y:scroll; overflow-x:hidden; height:400px;">
 
