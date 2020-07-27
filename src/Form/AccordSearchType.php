@@ -40,7 +40,7 @@ class AccordSearchType extends AbstractType
                 'choice_label' => 'sousType',
                 'label' => false,
                 'required' => false,
-                'placeholder' => 'Sélectionnez le sous type',
+                'placeholder' => 'Sélectionnez le sous type du document',
             ])
             ->add('langue', EntityType::class, [
                 'class' => Langue::class,

@@ -14,6 +14,9 @@
             "config/packages/dh_doctrine_audit.yaml"
         ]
     },
+    "data-dog/audit-bundle": {
+        "version": "v0.1.19"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {

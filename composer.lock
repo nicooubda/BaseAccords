@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2dd3484a150cc51e7dba3317a64696ca",
+    "content-hash": "69b560224ccc46730e8a120f6c8d59ed",
     "packages": [
         {
             "name": "beberlei/doctrineextensions",
@@ -65,12 +65,12 @@
             "version": "3.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/DamienHarper/DoctrineAuditBundle.git",
+                "url": "https://github.com/DamienHarper/auditor-bundle.git",
                 "reference": "c72d4ccf938bd680508337da077d2beb5a35dc55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DamienHarper/DoctrineAuditBundle/zipball/c72d4ccf938bd680508337da077d2beb5a35dc55",
+                "url": "https://api.github.com/repos/DamienHarper/auditor-bundle/zipball/c72d4ccf938bd680508337da077d2beb5a35dc55",
                 "reference": "c72d4ccf938bd680508337da077d2beb5a35dc55",
                 "shasum": ""
             },
@@ -131,6 +131,76 @@
                 "doctrine"
             ],
             "time": "2020-02-07T09:30:28+00:00"
+        },
+        {
+            "name": "data-dog/audit-bundle",
+            "version": "v0.1.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DATA-DOG/DataDogAuditBundle.git",
+                "reference": "6f0e570b75a652f9daf3549a1bbc2c092dc8b2c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DATA-DOG/DataDogAuditBundle/zipball/6f0e570b75a652f9daf3549a1bbc2c092dc8b2c9",
+                "reference": "6f0e570b75a652f9daf3549a1bbc2c092dc8b2c9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.4",
+                "php": ">=5.4.0",
+                "symfony/framework-bundle": "^2.6|^3.0|^4.0|^5.0"
+            },
+            "require-dev": {
+                "data-dog/pager-bundle": "^0.2",
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-fixtures-bundle": "^2.2",
+                "doctrine/orm": "^2.5",
+                "ext-pdo": "*",
+                "ext-pdo_sqlite": "*",
+                "knplabs/knp-menu-bundle": "^2.0",
+                "knplabs/knp-time-bundle": "^1.3",
+                "php": ">=5.6.0",
+                "phpunit/phpunit": "~4.7.0",
+                "sensio/framework-extra-bundle": "^3.0.2",
+                "symfony/symfony": "^3.0|^4.0|^5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DataDog\\AuditBundle\\": "src/DataDog/AuditBundle"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "DataDog Team",
+                    "homepage": "http://datadog.lt"
+                },
+                {
+                    "name": "Symfony2 Community",
+                    "homepage": "http://github.com/DATA-DOG/DataDogAuditBundle/contributors"
+                }
+            ],
+            "description": "Audit bundle for symfony2 and doctrine orm, logs any database change",
+            "homepage": "http://github.com/DATA-DOG/DataDogAuditBundle",
+            "keywords": [
+                "Audit",
+                "Symfony2",
+                "bundle",
+                "doctrine",
+                "log",
+                "orm"
+            ],
+            "time": "2020-04-03T20:59:53+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -7067,5 +7137,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
